@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Hacker Outpost: About</title>
+  <title>Hacker Outpost: RedCloth on Arch Linux</title>
   <meta name="author" content="spo11">
   
 
@@ -16,7 +16,7 @@
 
   
 
-  <link rel="canonical" href="http://spo11.github.com/about/index.html"/>
+  <link rel="canonical" href="http://spo11.github.com/blog/2011/07/30/redcloth-on-arch-linux/"/>
   <link href="/favicon.png" rel="shortcut icon" />
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,56 +79,108 @@
   <div id="main">
     <div id="content">
       <div>
-<article>
-  <header>
-    <h1 class="entry-title">About</h1>
-    <p class="meta">
-
-
-
-
-<time datetime="2011-07-28 21:46:00 -0500" pubdate  updated >Jul 28<span>th</span>, 2011</time>
-
-
-</p>
-  </header>
-  <p>I&#8217;m <strong>Ally</strong>, a twenty-something geek from a big city. I study <em>molecular &amp; cellular biology</em> at a university and also study <em>anthropology</em> to nurture my interest in the humanities.</p>
-
-<p>Elsewhere, you can find me on <a href="https://github.com/spo11">github</a>, <a href="http://spliceosome.deviantart.com">deviantART</a>, and <a href="http://last.fm/user/kalikoke">last.fm</a>.</p>
-
-<h3>Code</h3>
-
-<p>I learned how to program in various languages. Of the scripting languages, I have the most proficiency in <em>python</em> and <em>ruby</em>. Web-wise, I can code in <em>php</em>, <em>html/css</em>.</p>
-
-<h3>Network</h3>
-
-<p>When I&#8217;m not studying or writing code, I tinker with a web server I built using an old computer.</p>
-
-<h3>Computer Setup</h3>
-
-<p>I&#8217;m neither a Mac nor Windows person. My laptop at the moment has <a href="http://archlinux.org">Arch Linux</a> installed. I try to keep a very light setup with the <a href="http://subtle.subforge.org">subtle</a> window manager.</p>
-
-<h3>This Site</h3>
-
-<p>This site is hosted on GitHub pages.</p>
-
-<p>If you&#8217;re interested in seeing the source code, head on over to <a href="https://github.com/spo11/spo11.github.com">github</a>.</p>
-
+<article class="hentry">
   
-    <footer>
+  <header>
+    
+      <h1 class="entry-title">RedCloth on Arch Linux</h1>
+    
+    
       <p class="meta">
 
 
 
 
-<time datetime="2011-07-28 21:46:00 -0500" pubdate  updated >Jul 28<span>th</span>, 2011</time>
+<time datetime="2011-07-30 17:06:00 -0500" pubdate  updated >Jul 30<span>th</span>, 2011</time>
 
 
 </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I&#8217;ve been playing around with Octopress to manage this github site. The setup is pretty easy, but I came across some trouble with the RedCloth installation. The compile fails because in gcc 4.6 (which is what is installed on my Arch Linux system), warnings are treated as errors, so the compile process aborts.</p>
+
+<p>I found out that using an older version of gcc will fix this, so I installed gcc 4.5 from the AUR:</p>
+
+<div><figure role=code><pre><code>packer -S gcc45</code></pre></figure></div>
+
+
+<p>Note that I use <em>packer</em> as my AUR helper. You might be using a different helper (or even installing manually, which is up to you, I suppose).</p>
+
+<p>It took about an hour and a half on my dual core system to compile gcc. If you&#8217;re lucky and have one of those fancy new processors, it should not take as long.</p>
+
+<p>Once it has installed, you have to set gcc 4.5 as the default compiler. To do this, simply rename <strong>/usr/bin/gcc</strong> (which is gcc-4.6) to something else (e.g. <strong>/usr/bin/gcc-4.6</strong>).</p>
+
+<div><figure role=code><pre><code>mv /usr/bin/gcc /usr/bin/gcc-4.6</code></pre></figure></div>
+
+
+<p>Then rename gcc-4.5 to gcc.</p>
+
+<div><figure role=code><pre><code>mv /usr/bin/gcc-4.5 /usr/bin/gcc</code></pre></figure></div>
+
+
+<p>Then try installing the RedCloth gem again.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
       
-    </footer>
   
+
+<span class="byline author vcard">Posted by <span class="fn">spo11</span></span>
+
+      
+
+
+
+
+<time datetime="2011-07-30 17:06:00 -0500" pubdate  updated >Jul 30<span>th</span>, 2011</time>
+
+
+
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux-/'>linux,</a>, <a class='category' href='/blog/categories/troubleshoot/'>troubleshoot</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://spo11.github.com/blog/2011/07/30/redcloth-on-arch-linux/" data-via="" data-counturl="http://spo11.github.com/blog/2011/07/30/redcloth-on-arch-linux/" >Tweet</a>
+  
+  
+  <g:plusone size="medium"></g:plusone>
+  
+</div>
+
+    
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread"><div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'hackeroutpost';
+  var disqus_identifier = 'http://spo11.github.com/blog/2011/07/30/redcloth-on-arch-linux/';
+  var disqus_url = 'http://spo11.github.com/blog/2011/07/30/redcloth-on-arch-linux/';
+  //var disqus_developer = 1;
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
